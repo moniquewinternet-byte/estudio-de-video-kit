@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kit Estúdio de Vídeo</title>
+<meta name="description" content="Baixe o agente Estúdio de Vídeo e use a biblioteca de prompts pra baixar, editar e postar no Claude Code.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600&family=Doto:wght@700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{ --azul:#0057B8; --laranja:#FF6B2B; --rosa:#FF3E8A; --ink:#14263C; --muted:#4A5568; --line:#E2E7EE; --bg:#FFFFFF; --card:#F4F6F9; }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --ink:#EAF0F6; --muted:#A9B6C4; --line:#2A3748; --bg:#0E151F; --card:#162232; } }
+  :root[data-theme="dark"]{ --ink:#EAF0F6; --muted:#A9B6C4; --line:#2A3748; --bg:#0E151F; --card:#162232; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ background:var(--bg); color:var(--ink); font-family:'Inter',Arial,sans-serif; line-height:1.5; padding:40px 16px 80px; }
+  .wrap{ max-width:760px; margin:0 auto; }
+  .dots{ display:flex; gap:9px; margin-bottom:18px; }
+  .dots i{ width:14px; height:14px; border-radius:50%; display:inline-block; }
+  h1{ font-family:'Chakra Petch',Georgia,serif; font-weight:700; color:var(--azul); font-size:42px; letter-spacing:-1px; line-height:1.05; }
+  .sub{ color:var(--muted); font-size:17px; margin-top:8px; }
+  .card{ background:var(--card); border:1.5px solid var(--line); border-radius:18px; padding:22px; margin-top:20px; }
+  .step{ font-family:'Doto','Courier New',monospace; font-weight:700; font-size:15px; letter-spacing:3px; color:var(--azul); text-transform:uppercase; }
+  .card h2{ font-family:'Chakra Petch',Georgia,serif; font-weight:700; color:var(--ink); font-size:24px; margin:6px 0 8px; }
+  .card p{ color:var(--muted); font-size:16px; margin:0 0 12px; }
+  .pl{ color:var(--ink); font-weight:600; font-size:17px; margin:22px 0 8px; }
+  .pl:first-of-type{ margin-top:4px; }
+  pre{ font-family:'JetBrains Mono','Courier New',monospace; font-size:14px; background:var(--bg); border:1.5px solid var(--line); border-radius:12px; padding:14px 16px; white-space:pre-wrap; word-break:break-word; color:var(--ink); margin-bottom:10px; max-height:230px; overflow:auto; }
+  button.cp, a.dl{ font-family:'Inter',sans-serif; font-weight:600; font-size:15px; color:#fff; background:var(--azul); border:none; border-radius:10px; padding:11px 20px; cursor:pointer; display:inline-block; text-decoration:none; }
+  a.dl{ font-size:17px; padding:14px 26px; }
+  button.cp.ok{ background:var(--laranja); }
+  .mt{ margin-top:16px; }
+  .foot{ color:var(--muted); font-size:14px; margin-top:26px; text-align:center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="dots"><i style="background:#0057B8"></i><i style="background:#FF6B2B"></i><i style="background:#FF3E8A"></i></div>
+  <h1>Kit Estúdio de Vídeo</h1>
+  <p class="sub">Baixe o agente, peça pra ele se preparar, e use a biblioteca de prompts conforme o que você quer fazer.</p>
+
+  <div class="card">
+    <div class="step">Passo 1 · baixar o agente</div>
+    <h2>O Estúdio de Vídeo</h2>
+    <p>Baixe o arquivo e descompacte a pasta <b>estudio-de-video</b> dentro de <b>.claude/skills/</b> do seu projeto no Claude Code.</p>
+    <a class="dl" href="estudio-de-video.zip" download>Baixar o agente (.zip)</a>
+  </div>
+
+  <div class="card">
+    <div class="step">Passo 2 · preparar o agente</div>
+    <h2>Ele instala tudo sozinho</h2>
+    <p>Abra o Claude Code e mande o prompt abaixo. O agente instala o que falta. Você só clica em <b>permitir</b> quando ele pedir, cola as suas chaves (ElevenLabs e Postiz) quando ele pedir, e se ele mandar <b>fechar e reabrir o Claude Code</b>, faça isso.</p>
+    <pre id="p-prep">Estúdio de Vídeo, se prepara pra trabalhar: confere e instala tudo que você precisa, e me avisa o que você precisa de mim (login ou chave).</pre>
+    <button class="cp" onclick="copyEl(this,'p-prep')">Copiar prompt</button>
+  </div>
+
+  <div class="card">
+    <div class="step">Passo 3 · baixar o vídeo</div>
+    <h2>Trazer o vídeo pra editar</h2>
+    <p>Redes sociais (TikTok, Reels, YouTube, Kwai, Pinterest):</p>
+    <pre id="p-dl">Baixa esse vídeo [cole o link] com o yt-dlp.</pre>
+    <button class="cp" onclick="copyEl(this,'p-dl')">Copiar prompt</button>
+    <p class="mt">Shopee e Mercado Livre (o yt-dlp não pega): abra <b>www.baixadorafiliado.com</b>, cole o link do produto e baixe. Reserva: www.botcash.com.br.</p>
+  </div>
+
+  <div class="card">
+    <div class="step">Passo 4 · biblioteca de prompts</div>
+    <h2>Escolha o que você quer</h2>
+    <p>Copie o prompt do que você quer fazer e cole no Claude Code.</p>
+
+    <p class="pl">Quero editar pra Reels (completo)</p>
+    <pre id="p-reels">Edita esse vídeo pra Reels de afiliado: tira os silêncios e as pausas, cortes rápidos, legenda em português estilo CapCut, formato 9:16. Gancho forte nos 3 primeiros segundos, o produto em uso, prova e chamada pra compra. Me mostra uma prévia antes de finalizar.</pre>
+    <button class="cp" onclick="copyEl(this,'p-reels')">Copiar</button>
+
+    <p class="pl">Quero só tirar o silêncio e cortar</p>
+    <pre id="p-cut">Pega esse vídeo e tira só os silêncios e as pausas, deixando os cortes rápidos e no formato 9:16. Sem legenda por enquanto.</pre>
+    <button class="cp" onclick="copyEl(this,'p-cut')">Copiar</button>
+
+    <p class="pl">Quero usar um vídeo de referência</p>
+    <pre id="p-ref">Esses são vídeos de referência que eu gosto do estilo [anexe os arquivos ou cole os links]. Analisa o ritmo dos cortes, o tipo de legenda e o tipo de gancho, e edita os meus próximos vídeos no mesmo estilo.</pre>
+    <button class="cp" onclick="copyEl(this,'p-ref')">Copiar</button>
+
+    <p class="pl">Quero usar a minha voz (narração)</p>
+    <pre id="p-voz">Escreve uma narração pra esse vídeo no meu estilo, gera o áudio com a minha voz na ElevenLabs e encaixa no vídeo. Me mostra o texto antes.</pre>
+    <button class="cp" onclick="copyEl(this,'p-voz')">Copiar</button>
+
+    <p class="pl">Quero só a legenda em português</p>
+    <pre id="p-leg">Coloca legenda em português nesse vídeo, estilo CapCut, palavra por palavra. Me mostra o texto pra eu revisar antes de queimar no vídeo.</pre>
+    <button class="cp" onclick="copyEl(this,'p-leg')">Copiar</button>
+
+    <p class="pl">Quero overlay de preço e CTA</p>
+    <pre id="p-overlay">Põe um overlay animado de preço e chamada pra compra nesse vídeo, com o texto no centro e no formato 9:16.</pre>
+    <button class="cp" onclick="copyEl(this,'p-overlay')">Copiar</button>
+
+    <p class="pl">Quero fazer vários de uma vez (combinatória)</p>
+    <pre id="p-combo">Tenho 5 ganchos, 5 conteúdos e 5 CTAs gravados separados. Monta as combinações e me gera os vídeos, cada um já editado, legendado e no formato Reels.</pre>
+    <button class="cp" onclick="copyEl(this,'p-combo')">Copiar</button>
+
+    <p class="pl">Quero refazer um vídeo campeão</p>
+    <pre id="p-camp">Pega esse vídeo que viralizou e refaz como um template editável, trocando o produto, o preço e o CTA pelos meus.</pre>
+    <button class="cp" onclick="copyEl(this,'p-camp')">Copiar</button>
+  </div>
+
+  <div class="card">
+    <div class="step">Passo 5 · postar</div>
+    <h2>Agendar no Postiz</h2>
+    <p>Na primeira vez o agente te pede pra logar no Postiz. Depois, é só pedir:</p>
+    <pre id="p-post">Agenda esse vídeo no meu Instagram e TikTok pra amanhã às 18h, com essa legenda: [escreva a legenda]</pre>
+    <button class="cp" onclick="copyEl(this,'p-post')">Copiar</button>
+  </div>
+
+  <p class="foot">@moniquetecnologia · tecnologia na prática. resultados na vida.</p>
+</div>
+
+<script>
+function copyEl(btn, id){
+  var t = document.getElementById(id).textContent;
+  function done(){ var o = btn.textContent; btn.textContent = 'Copiado ✓'; btn.classList.add('ok');
+    setTimeout(function(){ btn.textContent = o; btn.classList.remove('ok'); }, 1600); }
+  try{ navigator.clipboard.writeText(t).then(done, function(){ fallback(t, done); }); }
+  catch(e){ fallback(t, done); }
+}
+function fallback(t, done){
+  try{ var a=document.createElement('textarea'); a.value=t; document.body.appendChild(a); a.select(); document.execCommand('copy'); document.body.removeChild(a); done(); }
+  catch(e){ alert('Copie manualmente.'); }
+}
+</script>
+</body>
+</html>
