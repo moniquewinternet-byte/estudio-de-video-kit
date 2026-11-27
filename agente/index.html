@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estúdio de Vídeo</title>
+<meta name="description" content="Baixe o agente Estúdio de Vídeo: baixa, edita, legenda, dá voz e posta os seus vídeos. Você só conversa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600&family=Doto:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{ --azul:#0057B8; --laranja:#FF6B2B; --rosa:#FF3E8A; --ink:#14263C; --muted:#4A5568; --line:#E2E7EE; --bg:#FFFFFF; --card:#F4F6F9; }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --ink:#EAF0F6; --muted:#A9B6C4; --line:#2A3748; --bg:#0E151F; --card:#162232; } }
+  :root[data-theme="dark"]{ --ink:#EAF0F6; --muted:#A9B6C4; --line:#2A3748; --bg:#0E151F; --card:#162232; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ background:var(--bg); color:var(--ink); font-family:'Inter',Arial,sans-serif; line-height:1.5; padding:56px 16px 80px; }
+  .wrap{ max-width:720px; margin:0 auto; }
+  .blob{ position:fixed; right:-160px; top:-160px; width:520px; height:520px; background:radial-gradient(circle at 32% 30%, var(--laranja), var(--rosa)); border-radius:50%; opacity:.10; z-index:0; }
+  .wrap{ position:relative; z-index:1; }
+  .dots{ display:flex; gap:9px; margin-bottom:20px; }
+  .dots i{ width:15px; height:15px; border-radius:50%; display:inline-block; }
+  .eyebrow{ font-family:'Doto','Courier New',monospace; font-weight:700; font-size:16px; letter-spacing:5px; color:var(--azul); text-transform:uppercase; }
+  h1{ font-family:'Chakra Petch',Georgia,serif; font-weight:700; color:var(--azul); font-size:72px; letter-spacing:-2px; line-height:.98; margin-top:8px; }
+  .tri{ display:flex; gap:10px; margin-top:22px; }
+  .tri span{ height:12px; width:92px; border-radius:6px; }
+  .lead{ font-size:22px; color:var(--ink); margin-top:28px; max-width:600px; font-weight:500; }
+  .grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:28px; }
+  .feat{ background:var(--card); border:1.5px solid var(--line); border-radius:14px; padding:16px 18px; }
+  .feat b{ display:block; color:var(--ink); font-size:16px; }
+  .feat span{ color:var(--muted); font-size:14px; }
+  .cta{ margin-top:34px; }
+  a.dl{ font-family:'Inter',sans-serif; font-weight:700; font-size:19px; color:#fff; background:var(--azul); border-radius:12px; padding:18px 32px; display:inline-block; text-decoration:none; }
+  .how{ color:var(--muted); font-size:15px; margin-top:18px; }
+  .how b{ color:var(--ink); }
+  .foot{ color:var(--muted); font-size:14px; margin-top:40px; }
+</style>
+</head>
+<body>
+<div class="blob"></div>
+<div class="wrap">
+  <div class="dots"><i style="background:#0057B8"></i><i style="background:#FF6B2B"></i><i style="background:#FF3E8A"></i></div>
+  <p class="eyebrow">O seu agente</p>
+  <h1>Estúdio<br>de Vídeo</h1>
+  <div class="tri"><span style="background:#0057B8"></span><span style="background:#FF6B2B"></span><span style="background:#FF3E8A"></span></div>
+  <p class="lead">Um agente que baixa, edita, legenda, dá voz e posta os seus vídeos. Você só conversa.</p>
+
+  <div class="grid">
+    <div class="feat"><b>Baixa</b><span>TikTok, Reels, YouTube, Shopee e Mercado Livre</span></div>
+    <div class="feat"><b>Edita</b><span>tira silêncio, cortes, 9:16, pronto pro Reels</span></div>
+    <div class="feat"><b>Legenda</b><span>em português, estilo CapCut</span></div>
+    <div class="feat"><b>Dá voz</b><span>narração com a sua voz</span></div>
+    <div class="feat"><b>Overlay</b><span>preço e chamada pra compra animados</span></div>
+    <div class="feat"><b>Posta</b><span>agenda nas suas redes</span></div>
+  </div>
+
+  <div class="cta"><a class="dl" href="../estudio-de-video.zip" download>Baixar o agente (.zip)</a></div>
+  <p class="how">Depois de baixar, descompacte a pasta <b>estudio-de-video</b> dentro de <b>.claude/skills/</b> do seu Claude Code.</p>
+
+  <p class="foot">@moniquetecnologia · tecnologia na prática. resultados na vida.</p>
+</div>
+</body>
+</html>
