@@ -24,7 +24,8 @@
   .tri{ display:flex; gap:10px; margin-top:22px; }
   .tri span{ height:12px; width:92px; border-radius:6px; }
   .lead{ font-size:18px; color:var(--ink); margin-top:24px; max-width:560px; font-weight:500; }
-  .grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:28px; }
+  .grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:28px; }
+  @media (max-width:480px){ .grid{ grid-template-columns:1fr; } }
   .feat{ background:var(--card); border:1.5px solid var(--line); border-radius:14px; padding:16px 18px; }
   .feat b{ display:block; color:var(--ink); font-size:16px; }
   .feat span{ color:var(--muted); font-size:14px; }
